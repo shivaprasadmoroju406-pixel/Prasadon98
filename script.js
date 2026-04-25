@@ -2,7 +2,7 @@ const sections = ['landing','main','details','end'];
 let current = 0;
 let started = false;
 
-/* 🎬 IMAGE SLIDES */
+/* IMAGE LIST (CHECK NAMES EXACTLY) */
 const images = [
   "images/cover.jpg",
   "images/wedding.jpg",
@@ -10,42 +10,55 @@ const images = [
   "images/gallery2.jpg"
 ];
 
+let sliderStarted = false;
 let index = 0;
 
-/* START INVITE */
+/* START */
 function startInvite(){
   started = true;
   navigate(1);
 
   document.getElementById('navButtons').style.display = 'block';
+
   document.getElementById('bgMusic').play();
 
-  startSlider(); // 🎬 start motion images
+  startSlider();
 }
 
-/* BACKGROUND SLIDER FUNCTION */
+/* SLIDER (NO GLITCH VERSION) */
 function startSlider(){
+  if(sliderStarted) return;
+  sliderStarted = true;
+
   const bg = document.getElementById('bgSlider');
 
   bg.style.backgroundImage = `url(${images[0]})`;
 
   setInterval(()=>{
     index = (index + 1) % images.length;
-    bg.style.backgroundImage = `url(${images[index]})`;
-  }, 3000); // change every 3 sec
+
+    // fade out
+    bg.style.opacity = 0;
+
+    setTimeout(()=>{
+      bg.style.backgroundImage = `url(${images[index]})`;
+      bg.style.opacity = 1;
+    }, 500);
+
+  }, 5000); // slow cinematic
 }
 
 /* NAVIGATION */
 function navigate(d){
-  const newIndex = current + d;
-  if(newIndex < 0 || newIndex >= sections.length) return;
+  const next = current + d;
+  if(next < 0 || next >= sections.length) return;
 
   document.getElementById(sections[current]).classList.remove('active');
-  current = newIndex;
+  current = next;
   document.getElementById(sections[current]).classList.add('active');
 }
 
-/* FUN NO BUTTON */
+/* NO BUTTON FUN */
 const noBtn = document.getElementById('noBtn');
 
 noBtn.addEventListener('mouseenter', ()=>{
