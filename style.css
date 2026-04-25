@@ -10,9 +10,12 @@ body {
   position: fixed;
   inset: 0;
   z-index: -2;
+
   background-size: cover;
   background-position: center;
-  transition: background-image 1.5s ease-in-out;
+  background-repeat: no-repeat;
+
+  transition: opacity 1s ease-in-out;
 }
 
 /* DARK OVERLAY */
@@ -21,6 +24,14 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.5);
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  #bgSlider {
+    background-size: contain;
+    background-color: black;
+  }
 }
 
 /* SECTIONS */
