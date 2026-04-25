@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Prasad Weds Deekshitha</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music/song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BACKGROUND SLIDES -->
+<div id="bgSlider"></div>
+
+<!-- LANDING -->
+<div class="section active" id="landing">
+  <h1>💍 Prasad Weds Deekshitha 💍</h1>
+  <p>Will you come to our wedding? 😄</p>
+
+  <div>
+    <button onclick="startInvite()">YES 😍</button>
+    <button id="noBtn">NO 😏</button>
+  </div>
+</div>
+
+<!-- INVITE -->
+<div class="section" id="main">
+  <h1>You're Invited 🎉</h1>
+  <p>Scroll Down ↓</p>
+</div>
+
+<!-- WEDDING DETAILS -->
+<div class="section" id="details">
+  <h1>Wedding Details 💍</h1>
+
+  <p><b>Sumuhurtham:</b><br>
+  Friday, 1st May 2026<br>
+  10:00 AM – 12:00 PM</p>
+
+  <p><b>Venue:</b><br>
+  S.N.R. Gardens, Sai Nagar Kompally, Hyderabad</p>
+
+  <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">
+    <button>Open Location 📍</button>
+  </a>
+
+  <p><b>Vratham:</b><br>
+  Saturday, 2nd May 2026<br>
+  11:00 AM at Our Residence</p>
+
+  <p><b>Reception:</b><br>
+  Sunday, 3rd May 2026<br>
+  7:30 PM<br>
+  MNR Convention A/c, Nalgonda</p>
+
+  <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">
+    <button>Reception Location 📍</button>
+  </a>
+
+</div>
+
+<!-- END -->
+<div class="section" id="end">
+  <h1>See You There ❤️</h1>
+</div>
+
+<!-- NAV -->
+<div class="nav-buttons" id="navButtons">
+  <button onclick="navigate(-1)">↑</button>
+  <button onclick="navigate(1)">↓</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
