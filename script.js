@@ -1,77 +1,54 @@
-const sections = ['landing','main','details','end'];
+let sections = document.querySelectorAll(".section");
 let current = 0;
-let started = false;
 
-/* IMAGE LIST (CHECK NAMES EXACTLY) */
-const images = [
-  "images/cover.jpg",
-  "images/wedding.jpg",
-  "images/gallery1.jpg",
-  "images/gallery2.jpg"
+let images = [
+  "assets/bg1.jpg",
+  "assets/bg2.jpg",
+  "assets/bg3.jpg",
+  "assets/bg4.jpg"
 ];
 
-let sliderStarted = false;
-let index = 0;
+let bg = document.getElementById("bgSlider");
+let imgIndex = 0;
 
-/* START */
-function startInvite(){
-  started = true;
-  navigate(1);
+/* BACKGROUND SLIDER */
+setInterval(() => {
+  imgIndex = (imgIndex + 1) % images.length;
+  bg.style.backgroundImage = `url(${images[imgIndex]})`;
+}, 3000);
 
-  document.getElementById('navButtons').style.display = 'block';
+/* INITIAL BG */
+bg.style.backgroundImage = `url(${images[0]})`;
 
-  document.getElementById('bgMusic').play();
-
-  startSlider();
-}
-
-/* SLIDER (NO GLITCH VERSION) */
-function startSlider(){
-  if(sliderStarted) return;
-  sliderStarted = true;
-
-  const bg = document.getElementById('bgSlider');
-
-  bg.style.backgroundImage = `url(${images[0]})`;
-
-  setInterval(()=>{
-    index = (index + 1) % images.length;
-
-    // fade out
-    bg.style.opacity = 0;
-
-    setTimeout(()=>{
-      bg.style.backgroundImage = `url(${images[index]})`;
-      bg.style.opacity = 1;
-    }, 500);
-
-  }, 5000); // slow cinematic
+/* START INVITE */
+function startInvite() {
+  document.getElementById("bgMusic").play();
+  showSection(1);
 }
 
 /* NAVIGATION */
-function navigate(d){
-  const next = current + d;
-  if(next < 0 || next >= sections.length) return;
+function navigate(dir) {
+  let next = current + dir;
 
-  document.getElementById(sections[current]).classList.remove('active');
-  current = next;
-  document.getElementById(sections[current]).classList.add('active');
+  if (next >= 0 && next < sections.length) {
+    showSection(next);
+  }
 }
 
-/* NO BUTTON FUN */
-const noBtn = document.getElementById('noBtn');
+function showSection(index) {
+  sections[current].classList.remove("active");
+  current = index;
+  sections[current].classList.add("active");
+}
 
-noBtn.addEventListener('mouseenter', ()=>{
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
+/* ESCAPING NO BUTTON 😏 */
+let noBtn = document.getElementById("noBtn");
 
-  noBtn.style.position = 'fixed';
-  noBtn.style.left = x + 'px';
-  noBtn.style.top = y + 'px';
-});
+noBtn.addEventListener("mouseover", () => {
+  let x = Math.random() * window.innerWidth - 100;
+  let y = Math.random() * window.innerHeight - 50;
 
-/* SCROLL */
-document.addEventListener('wheel', e=>{
-  if(!started) return;
-  navigate(e.deltaY > 0 ? 1 : -1);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
