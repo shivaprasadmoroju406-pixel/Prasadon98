@@ -31,52 +31,35 @@
 <div id="profilePage" class="page active">
 
   <!-- HERO -->
-  <div class="profile-hero">
+  <div class="premium-hero">
     <h1>Deekshitha ❤️ Prasad</h1>
-    <p>We invite you to celebrate our love 💕</p>
+    <p>Our Forever Begins 💕</p>
   </div>
+
+  <!-- COUNTDOWN -->
+  <div id="countdown" class="premium-countdown"></div>
+
+  <!-- CALENDAR -->
+  <button class="premium-btn" onclick="addToCalendar()">📅 Add to Calendar</button>
 
   <!-- EVENTS -->
-  <div class="event-list">
-
+  <div class="premium-events">
     <div class="event-card">
-      <div class="event-icon">💍</div>
-      <div class="event-info">
-        <h3>Sumuhurtham</h3>
-        <p>Friday, 1 May 2026</p>
-        <span>10:00 AM – 12:00 PM</span>
-        <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">📍 View Venue</a>
-      </div>
+      <h3>💍 Wedding</h3>
+      <p>May 1, 2026</p>
     </div>
 
     <div class="event-card">
-      <div class="event-icon">🪔</div>
-      <div class="event-info">
-        <h3>Vratham</h3>
-        <p>Saturday, 2 May 2026</p>
-        <span>11:00 AM</span>
-      </div>
+      <h3>🎉 Reception</h3>
+      <p>May 3, 2026</p>
     </div>
-
-    <div class="event-card">
-      <div class="event-icon">🎉</div>
-      <div class="event-info">
-        <h3>Reception</h3>
-        <p>Sunday, 3 May 2026</p>
-        <span>7:30 PM</span>
-        <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">📍 View Venue</a>
-      </div>
-    </div>
-
   </div>
 
-  <!-- GALLERY -->
-  <div class="profile-gallery">
-    <h3>Memories 💖</h3>
-    <div id="profileGrid" class="grid"></div>
-  </div>
+  <!-- STORY TIMELINE -->
+  <div id="timeline" class="timeline"></div>
 
 </div>
+
 
 <!-- STORY -->
 <div id="storyModal" class="story-modal hidden" onclick="closeStory()">
