@@ -3,83 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>WeddingGram 💍</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="reelsPage" class="page">
-  <div class="reels-container" id="reels"></div>
-</div>
 
 <div class="app">
 
-<div class="header">WeddingGram 💍</div>
+  <!-- ================= HOME ================= -->
+  <div id="homePage" class="page active">
 
-<div id="stories" class="stories"></div>
+    <div class="header">WeddingGram 💍</div>
 
-<div id="home"></div>
+    <!-- STORIES -->
+    <div id="stories" class="stories"></div>
 
-<div id="reels" class="hidden"></div>
+    <!-- POSTS -->
+    <div id="home"></div>
 
-<div id="search" class="hidden">
-  <input class="search-bar" placeholder="Search...">
-  <div id="grid" class="grid"></div>
+  </div>
+
+  <!-- ================= REELS ================= -->
+  <div id="reelsPage" class="page">
+    <div class="reels-container" id="reels"></div>
+  </div>
+
+  <!-- ================= SEARCH ================= -->
+  <div id="searchPage" class="page">
+    <input class="search-bar" placeholder="Search...">
+    <div id="grid" class="grid"></div>
+  </div>
+
+  <!-- ================= PROFILE ================= -->
+  <div id="profilePage" class="page">
+
+    <div class="profile-header">
+      <h2>Deekshitha ❤️ Prasad</h2>
+      <p>Join us on our special day 💕</p>
+    </div>
+
+    <!-- 💍 WEDDING DETAILS -->
+    <div class="wedding-details">
+
+      <h3>💍 Wedding Details</h3>
+
+      <p><b>Sumuhurtham:</b><br>
+      On Friday 1st May 2026 at 10-12 a.m.</p>
+
+      <p><b>Venue:</b><br>
+      S.N.R. Gardens, Sai Nagar Kompally, Hyderabad.<br>
+      <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">📍 View Location</a></p>
+
+      <p><b>Vratham:</b><br>
+      On Saturday 2nd May 2026 at 11:00 a.m. at Our Residence</p>
+
+      <p><b>Reception:</b><br>
+      On Sunday 3rd May 2026 at 7:30 p.m.<br>
+      MNR Convention A/c. Balaji Homes, Marriguda Bypass, Nalgonda.<br>
+      <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">📍 View Location</a></p>
+
+    </div>
+
+    <!-- PROFILE POSTS -->
+    <div id="profileGrid" class="grid"></div>
+
+  </div>
+
 </div>
 
-<div id="profile" class="hidden">
-  <h2>Deekshitha ❤️ Prasad</h2>
-  <p>Join us on our special day 💕</p>
-  <div id="profileGrid" class="grid"></div>
-</div>
-
-<!-- STORY VIEWER -->
+<!-- ================= STORY VIEWER ================= -->
 <div id="storyModal" class="story-modal hidden" onclick="closeStory()">
-  <div class="progress"><div id="bar" class="bar"></div></div>
+  <div class="progress">
+    <div id="bar" class="bar"></div>
+  </div>
   <img id="storyImg">
 </div>
 
-<!-- NAV -->
+<!-- ================= BOTTOM NAV ================= -->
 <div class="bottom-nav">
-  <!-- Home -->
+
+  <!-- HOME -->
   <div onclick="showPage('homePage')">
-    <svg aria-label="Home" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
-      <path d="M22 23h-6.001a1 1 0 0 1-1-1v-5.657a2.346 2.346 0 1 0-4.692 0V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V11.158a1 1 0 0 1 .317-.732l10-9.457a1 1 0 0 1 1.365 0l10 9.457a1 1 0 0 1 .318.732V22a1 1 0 0 1-1 1Z"></path>
-    </svg>
+    🏠
   </div>
 
-  <!-- Search -->
+  <!-- SEARCH -->
   <div onclick="showPage('searchPage')">
-    <svg aria-label="Search" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
-      <path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-      <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.511" x2="22" y1="16.511" y2="22"></line>
-    </svg>
+    🔍
   </div>
 
-  <!-- Reels -->
+  <!-- REELS -->
   <div onclick="showPage('reelsPage')">
-    <svg aria-label="Reels" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
-      <rect fill="none" height="18" rx="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" x="2" y="3"></rect>
-      <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2" x2="22" y1="8" y2="8"></line>
-      <polygon points="10 12 10 18 15 15 10 12"></polygon>
-    </svg>
+    🎬
   </div>
 
-  <!-- Profile -->
+  <!-- PROFILE -->
   <div onclick="showPage('profilePage')">
-    <svg aria-label="Profile" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
-      <circle cx="12.004" cy="12.004" fill="none" r="10.5" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></circle>
-      <path d="M18.791 21c-.419-3.412-3.154-6.046-6.463-6.046a6.442 6.442 0 0 0-6.423 5.49" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></path>
-      <circle cx="12.004" cy="8.807" fill="none" r="2.801" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></circle>
-    </svg>
+    👤
   </div>
-</div>
-
 
 </div>
 
-<script src="data.js"></script>
+<!-- ================= SCRIPTS ================= -->
 <script src="script.js"></script>
 
 </body>
