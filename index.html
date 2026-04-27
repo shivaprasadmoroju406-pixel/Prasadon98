@@ -3,111 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>WeddingGram 💍</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="app">
-
-  <!-- ================= HOME ================= -->
-  <div id="homePage" class="page active">
-
-    <div class="header">WeddingGram 💍</div>
-
-    <!-- STORIES -->
-    <div id="stories" class="stories"></div>
-
-    <!-- POSTS -->
-    <div id="home"></div>
-
-  </div>
-
-  <!-- ================= REELS ================= -->
-  <div id="reelsPage" class="page">
-    <div class="reels-container" id="reels"></div>
-  </div>
-
-  <!-- ================= SEARCH ================= -->
-  <div id="searchPage" class="page">
-    <input class="search-bar" placeholder="Search...">
-    <div id="grid" class="grid"></div>
-  </div>
-
-  <!-- ================= PROFILE ================= -->
-  <div id="profilePage" class="page">
-
-    <div class="profile-header">
-      <h2>Deekshitha ❤️ Prasad</h2>
-      <p>Join us on our special day 💕</p>
-    </div>
-
-    <!-- 💍 WEDDING DETAILS -->
-    <div class="wedding-details">
-
-      <h3>💍 Wedding Details</h3>
-
-      <p><b>Sumuhurtham:</b><br>
-      On Friday 1st May 2026 at 10-12 a.m.</p>
-
-      <p><b>Venue:</b><br>
-      S.N.R. Gardens, Sai Nagar Kompally, Hyderabad.<br>
-      <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">📍 View Location</a></p>
-
-      <p><b>Vratham:</b><br>
-      On Saturday 2nd May 2026 at 11:00 a.m. at Our Residence</p>
-
-      <p><b>Reception:</b><br>
-      On Sunday 3rd May 2026 at 7:30 p.m.<br>
-      MNR Convention A/c. Balaji Homes, Marriguda Bypass, Nalgonda.<br>
-      <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">📍 View Location</a></p>
-
-    </div>
-
-    <!-- PROFILE POSTS -->
-    <div id="profileGrid" class="grid"></div>
-
-  </div>
-
+<!-- ================= HOME ================= -->
+<div id="homePage" class="page active">
+  <div class="header">WeddingGram 💍</div>
+  <div id="stories" class="stories"></div>
+  <div id="home"></div>
 </div>
 
-<!-- ================= STORY VIEWER ================= -->
-<div id="storyModal" class="story-modal hidden" onclick="closeStory()">
-  <div class="progress">
-    <div id="bar" class="bar"></div>
+<!-- ================= REELS ================= -->
+<div id="reelsPage" class="page">
+  <div class="reels-container" id="reels"></div>
+</div>
+
+<!-- ================= SEARCH ================= -->
+<div id="searchPage" class="page">
+  <input class="search-bar" placeholder="Search...">
+  <div id="grid" class="grid"></div>
+</div>
+
+<!-- ================= PROFILE ================= -->
+<div id="profilePage" class="page">
+  <div class="profile-header">
+    <h2>Deekshitha ❤️ Prasad</h2>
+    <p>Join us on our special day 💕</p>
   </div>
+
+  <div class="wedding-details">
+    <h3>💍 Wedding Details</h3>
+
+    <p><b>Sumuhurtham:</b><br>
+    On Friday 1st May 2026 at 10-12 a.m.</p>
+
+    <p><b>Venue:</b><br>
+    S.N.R. Gardens, Hyderabad<br>
+    <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">📍 View Location</a></p>
+
+    <p><b>Vratham:</b><br>
+    2nd May 2026 at 11:00 a.m.</p>
+
+    <p><b>Reception:</b><br>
+    3rd May 2026 at 7:30 p.m.<br>
+    <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">📍 View Location</a></p>
+  </div>
+
+  <div id="profileGrid" class="grid"></div>
+</div>
+
+<!-- STORY -->
+<div id="storyModal" class="story-modal hidden" onclick="closeStory()">
+  <div class="progress"><div id="bar"></div></div>
   <img id="storyImg">
 </div>
 
-<!-- ================= BOTTOM NAV ================= -->
+<!-- NAV -->
 <div class="bottom-nav">
-
-  <!-- HOME -->
-  <div onclick="showPage('homePage')">
-    🏠
-  </div>
-
-  <!-- SEARCH -->
-  <div onclick="showPage('searchPage')">
-    🔍
-  </div>
-
-  <!-- REELS -->
-  <div onclick="showPage('reelsPage')">
-    🎬
-  </div>
-
-  <!-- PROFILE -->
-  <div onclick="showPage('profilePage')">
-    👤
-  </div>
-
+  <div onclick="showPage('homePage')">🏠</div>
+  <div onclick="showPage('searchPage')">🔍</div>
+  <div onclick="showPage('reelsPage')">🎬</div>
+  <div onclick="showPage('profilePage')">👤</div>
 </div>
 
-<!-- ================= SCRIPTS ================= -->
+<script src="data.js"></script>
 <script src="script.js"></script>
 
 </body>
