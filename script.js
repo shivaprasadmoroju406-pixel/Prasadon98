@@ -9,6 +9,14 @@ function formatName(file){
     .replace(/\b\w/g,c=>c.toUpperCase());
 }
 
+function showPage(pageId){
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+}
+
 /* LOAD STORIES */
 DATA.stories.forEach((file,i)=>{
   storiesDiv.innerHTML += `
