@@ -1,10 +1,12 @@
+/* ===== GLOBAL ===== */
 body{
   margin:0;
-  font-family:sans-serif;
-  background:#fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:#0f0f12;
+  color:#fff;
 }
 
-/* PAGE */
+/* ===== PAGE ===== */
 .page{
   display:none;
   height:100vh;
@@ -14,138 +16,230 @@ body{
   display:block;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
   padding:15px;
-  font-weight:bold;
-  background:#fff;
-  border-bottom:1px solid #ddd;
+  font-size:20px;
+  font-weight:600;
+  background:#0f0f12;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-/* STORIES */
+/* ===== STORIES ===== */
 .stories{
   display:flex;
   overflow-x:auto;
-  padding:10px;
-  background:#fff;
-}
-.story{
-  margin-right:10px;
-  text-align:center;
-}
-.story img{
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  border:3px solid #ff0066;
+  padding:12px;
+  gap:12px;
 }
 
-/* POSTS */
-.post{
-  background:#fff;
-  margin:10px 0;
+.story{
+  text-align:center;
+  font-size:12px;
+  opacity:0.9;
 }
+
+.story img{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  padding:2px;
+  background:linear-gradient(45deg,#ff0066,#ffcc00,#833ab4);
+}
+
+/* ===== POSTS ===== */
+.post{
+  background:#1a1a1f;
+  margin:12px;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
 .post-header{
   display:flex;
   align-items:center;
-  padding:10px;
-}
-.post-header img{
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  margin-right:10px;
-}
-.post img.main{
-  width:100%;
-}
-.actions{
-  padding:10px;
-  font-size:20px;
-}
-.caption{
-  padding:0 10px 10px;
+  padding:12px;
+  gap:10px;
 }
 
-/* COMMENTS */
+.post-header img{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+}
+
+.post img.main{
+  width:100%;
+  display:block;
+}
+
+/* ===== ACTIONS ===== */
+.actions{
+  padding:10px 12px;
+  font-size:22px;
+  display:flex;
+  gap:12px;
+}
+
+.actions span{
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+
+.actions span:active{
+  transform:scale(1.3);
+}
+
+/* ===== CAPTION ===== */
+.caption{
+  padding:0 12px 12px;
+  font-size:14px;
+  opacity:0.9;
+}
+
+/* ===== COMMENTS ===== */
 .comment-box{
   display:flex;
+  border-top:1px solid rgba(255,255,255,0.08);
 }
+
 .comment-box input{
   flex:1;
+  background:none;
+  border:none;
+  color:white;
+  padding:10px;
 }
+
 .comment-box button{
   background:none;
   border:none;
-  color:blue;
+  color:#4da6ff;
+  padding:10px;
 }
 
-/* REELS */
+/* ===== REELS ===== */
 .reels-container{
   height:100vh;
   overflow-y:scroll;
   scroll-snap-type:y mandatory;
 }
+
 .reel{
   height:100vh;
+  position:relative;
   scroll-snap-align:start;
 }
+
 .reel video{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-/* GRID */
+/* 🎬 REELS SIDE UI */
+.reel::after{
+  content:"❤️\A💬\A📤";
+  white-space:pre;
+  position:absolute;
+  right:12px;
+  bottom:80px;
+  font-size:22px;
+  line-height:40px;
+}
+
+/* ===== GRID ===== */
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+  gap:2px;
 }
+
 .grid img{
   width:100%;
 }
 
-/* PROFILE */
-.wedding-details{
-  background:#fff;
-  margin:10px;
-  padding:10px;
-  border-radius:10px;
+/* ===== PROFILE ===== */
+.profile-header{
+  padding:15px;
 }
 
-/* NAV */
+.wedding-details{
+  margin:10px;
+  padding:15px;
+  border-radius:16px;
+  background:linear-gradient(145deg,#1c1c22,#121216);
+  box-shadow:0 4px 20px rgba(0,0,0,0.5);
+  line-height:1.6;
+}
+
+.wedding-details h3{
+  margin-top:0;
+}
+
+.wedding-details a{
+  color:#ff4d88;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== NAV ===== */
 .bottom-nav{
   position:fixed;
   bottom:0;
   width:100%;
-  height:60px;
-  background:#fff;
+  height:65px;
+  background:#0f0f12;
   display:flex;
   justify-content:space-around;
   align-items:center;
-  border-top:1px solid #ddd;
+  border-top:1px solid rgba(255,255,255,0.1);
 }
 
-/* STORY */
+.bottom-nav div{
+  font-size:22px;
+  opacity:0.7;
+  transition:0.2s;
+}
+
+.bottom-nav div:hover{
+  opacity:1;
+  transform:scale(1.2);
+}
+
+/* ===== STORY ===== */
 .story-modal{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
+
 .story-modal img{
   width:100%;
+  max-height:90%;
+  object-fit:contain;
 }
+
 .progress{
-  height:5px;
-  background:#444;
+  position:absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  height:4px;
+  background:rgba(255,255,255,0.2);
 }
+
 #bar{
-  height:5px;
-  background:white;
+  height:100%;
   width:0%;
+  background:white;
   transition:3s linear;
 }
 
