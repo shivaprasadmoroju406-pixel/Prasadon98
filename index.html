@@ -1,195 +1,253 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f7efe6" />
-  <title>Wedding Invitation Social</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Social Invite</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #222;
+}
+
+.header span {
+  font-size: 26px;
+}
+
+/* STORIES */
+.stories {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 12px;
+  border-bottom: 1px solid #222;
+}
+
+.story {
+  text-align: center;
+  min-width: 75px;
+}
+
+.story img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, orange, pink);
+}
+
+.story p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* POSTS */
+.post {
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.post-header img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post img.main {
+  width: 100%;
+  height: auto;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.actions span:hover {
+  opacity: 0.7;
+}
+
+/* CAPTION */
+.caption {
+  padding: 0 10px 10px;
+  font-size: 14px;
+}
+
+/* COMMENTS */
+.comments {
+  padding: 0 10px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.comment-box {
+  display: flex;
+  border-top: 1px solid #222;
+  margin-top: 10px;
+}
+
+.comment-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 10px;
+}
+
+.comment-box button {
+  background: none;
+  border: none;
+  color: #3897f0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <div class="brand-lockup">
-        <div class="brand-badge" aria-hidden="true">◆</div>
-        <div>
-          <p class="eyebrow">Wedding Invitation</p>
-          <h1 id="weddingTitle">Deekshitha &amp; Prasad</h1>
-          <p class="subtle" id="weddingSubtitle">A social-style invite for friends, family, and memories</p>
-        </div>
-      </div>
 
-      <button class="profile-shortcut" id="profileShortcut" type="button" aria-label="Open account">
-        <span class="profile-shortcut-ring">
-          <span class="profile-shortcut-avatar">DP</span>
-        </span>
-      </button>
-    </header>
+<div class="header">
+  <span>WeddingGram</span>
+  ❤️
+</div>
 
-    <main class="app-main">
-      <!-- HOME -->
-      <section class="view active" id="view-home" data-view="home" aria-label="Home">
-        <section class="hero-card">
-          <p class="eyebrow">You're invited</p>
-          <h2>Celebrate love in a modern social story</h2>
-          <p class="hero-copy">
-            Save the date, explore the moments, send wishes, and share the invite with one tap.
-          </p>
+<!-- STORIES -->
+<div class="stories">
 
-          <div class="hero-meta">
-            <span>11 May 2026</span>
-            <span>Hyderabad</span>
-            <span>Reception to follow</span>
-          </div>
-        </section>
-
-        <div class="section-head">
-          <h3>Stories</h3>
-          <span class="section-hint">Tap a circle to view</span>
-        </div>
-        <div id="storiesStrip" class="stories-strip" aria-label="Stories strip"></div>
-
-        <div class="section-head">
-          <h3>Friend feed</h3>
-          <span class="section-hint">Best wishes from friends</span>
-        </div>
-        <div id="feedList" class="feed-list" aria-label="Wedding feed"></div>
-      </section>
-
-      <!-- REELS -->
-      <section class="view" id="view-reels" data-view="reels" aria-label="Reels">
-        <div class="section-head section-head-wide">
-          <div>
-            <h3>Reels</h3>
-            <span class="section-hint">Engagement teasers and highlight clips</span>
-          </div>
-        </div>
-        <div id="reelsStage" class="reels-stage" aria-label="Scrollable reels feed"></div>
-      </section>
-
-      <!-- SHARE -->
-      <section class="view" id="view-share" data-view="share" aria-label="Share">
-        <div class="share-panel">
-          <p class="eyebrow">Share invite</p>
-          <h2>Send the wedding page to family and friends</h2>
-          <p class="share-copy">
-            Use the share sheet on mobile or copy the link instantly for WhatsApp, Messages, or email.
-          </p>
-
-          <div class="share-link-box">
-            <div>
-              <p class="mini-label">Page link</p>
-              <p id="shareLinkText" class="share-link-text">Loading…</p>
-            </div>
-            <button class="icon-button" id="copyShareLinkBtn" type="button">Copy</button>
-          </div>
-
-          <div class="share-actions">
-            <button class="primary-button" id="webShareBtn" type="button">Share page</button>
-            <button class="secondary-button" id="copyShareLinkBtn2" type="button">Copy link</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- SEARCH -->
-      <section class="view" id="view-search" data-view="search" aria-label="Search">
-        <div class="section-head section-head-wide">
-          <div>
-            <h3>Search</h3>
-            <span class="section-hint">Wedding location, reception, QR cards, and more</span>
-          </div>
-        </div>
-
-        <div class="search-bar">
-          <span class="search-icon" aria-hidden="true">⌕</span>
-          <input id="searchInput" type="search" placeholder="Search wedding location, reception, dress code…" autocomplete="off" />
-        </div>
-
-        <div id="suggestionChips" class="suggestion-chips" aria-label="Static suggestions"></div>
-        <div id="exploreGrid" class="explore-grid" aria-label="Explore grid"></div>
-      </section>
-
-      <!-- ACCOUNT / PROFILE -->
-      <section class="view" id="view-profile" data-view="profile" aria-label="Account">
-        <div class="profile-hero">
-          <div class="profile-avatar-wrap">
-            <div class="profile-avatar">DP</div>
-          </div>
-
-          <div class="profile-copy">
-            <p class="eyebrow">Wedding account</p>
-            <h2 id="profileNames">Deekshitha &amp; Prasad</h2>
-            <p id="profileBio" class="profile-bio">
-              A joyful invitation page for the engagement, wedding, and reception moments.
-            </p>
-
-            <div class="profile-actions">
-              <button class="primary-button" id="openCommentsPanelBtn" type="button">View all comments</button>
-              <button class="secondary-button" id="jumpToStoriesBtn" type="button">View stories</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="details-grid" id="detailsGrid" aria-label="Wedding details"></div>
-
-        <div class="section-head">
-          <h3>Moments</h3>
-          <span class="section-hint">Photos and videos from the celebration</span>
-        </div>
-        <div id="momentsGrid" class="moments-grid" aria-label="Moments gallery"></div>
-      </section>
-    </main>
-
-    <nav class="bottom-nav" aria-label="Bottom navigation">
-      <button class="nav-item active" type="button" data-nav="home">
-        <span class="nav-icon">⌂</span>
-        <span>Home</span>
-      </button>
-      <button class="nav-item" type="button" data-nav="reels">
-        <span class="nav-icon">▣</span>
-        <span>Reels</span>
-      </button>
-      <button class="nav-item" type="button" data-nav="share">
-        <span class="nav-icon">↗</span>
-        <span>Share</span>
-      </button>
-      <button class="nav-item" type="button" data-nav="search">
-        <span class="nav-icon">⌕</span>
-        <span>Search</span>
-      </button>
-      <button class="nav-item" type="button" data-nav="profile">
-        <span class="nav-icon">◉</span>
-        <span>Account</span>
-      </button>
-    </nav>
-
-    <!-- MEDIA MODAL -->
-    <div class="modal" id="mediaModal" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="modal-backdrop" data-close-modal></div>
-      <div class="modal-sheet">
-        <button class="modal-close" type="button" data-close-modal aria-label="Close preview">×</button>
-        <div id="mediaModalBody"></div>
-      </div>
-    </div>
-
-    <!-- COMMENTS DRAWER -->
-    <div class="drawer" id="commentsDrawer" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="drawer-backdrop" data-close-comments></div>
-      <aside class="drawer-sheet">
-        <div class="drawer-head">
-          <div>
-            <p class="eyebrow">Admin panel</p>
-            <h3>All guest comments</h3>
-          </div>
-          <button class="modal-close" type="button" data-close-comments aria-label="Close comments panel">×</button>
-        </div>
-        <div id="commentsPanelBody" class="comments-panel-body"></div>
-      </aside>
-    </div>
-
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div class="story">
+    <img src="assets/story1.jpg">
+    <p>Aarav</p>
   </div>
 
-  <script src="script.js"></script>
+  <div class="story">
+    <img src="assets/story2.jpg">
+    <p>Meera</p>
+  </div>
+
+  <div class="story">
+    <img src="assets/story3.jpg">
+    <p>Kabir</p>
+  </div>
+
+</div>
+
+<!-- POSTS -->
+
+<div id="feed"></div>
+
+<script>
+
+const posts = [
+  {
+    user: "Meera",
+    profile: "assets/story2.jpg",
+    image: "assets/post1.jpg",
+    caption: "Best wishes ❤️"
+  },
+  {
+    user: "Kabir",
+    profile: "assets/story3.jpg",
+    image: "assets/post2.jpg",
+    caption: "Amazing memories 🔥"
+  }
+];
+
+const feed = document.getElementById("feed");
+
+posts.forEach((post, index) => {
+
+  const postDiv = document.createElement("div");
+  postDiv.className = "post";
+
+  postDiv.innerHTML = `
+    <div class="post-header">
+      <img src="${post.profile}">
+      <b>${post.user}</b>
+    </div>
+
+    <img class="main" src="${post.image}">
+
+    <div class="actions">
+      <span onclick="likePost(this)">🤍</span>
+      <span onclick="focusComment(${index})">💬</span>
+      <span onclick="sharePost()">✈️</span>
+    </div>
+
+    <div class="caption">
+      <b>${post.user}</b> ${post.caption}
+    </div>
+
+    <div class="comments" id="comments-${index}"></div>
+
+    <div class="comment-box">
+      <input id="input-${index}" placeholder="Add a comment...">
+      <button onclick="addComment(${index})">Post</button>
+    </div>
+  `;
+
+  feed.appendChild(postDiv);
+});
+
+function likePost(el) {
+  el.textContent = el.textContent === "🤍" ? "❤️" : "🤍";
+}
+
+function addComment(index) {
+  const input = document.getElementById(`input-${index}`);
+  const comments = document.getElementById(`comments-${index}`);
+
+  if (input.value.trim() !== "") {
+    const p = document.createElement("p");
+    p.textContent = input.value;
+    comments.appendChild(p);
+    input.value = "";
+  }
+}
+
+function focusComment(index) {
+  document.getElementById(`input-${index}`).focus();
+}
+
+function sharePost() {
+  navigator.clipboard.writeText(window.location.href);
+  alert("Link copied!");
+}
+
+</script>
+
 </body>
 </html>
