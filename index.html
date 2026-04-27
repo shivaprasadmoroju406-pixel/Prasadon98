@@ -1,78 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WeddingGram 💍</title>
+<title>Wedding Instagram</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= HOME ================= -->
-<div id="homePage" class="page">
-  <div class="header">WeddingGram 💍</div>
-  <div id="stories" class="stories"></div>
-  <div id="home"></div>
-</div>
-
-<!-- ================= REELS ================= -->
-<div id="reelsPage" class="page">
-  <div class="reels-container" id="reels"></div>
-</div>
-
-<!-- ================= SEARCH ================= -->
-<div id="searchPage" class="page">
-  <input class="search-bar" placeholder="Search...">
-  <div id="grid" class="grid"></div>
-</div>
-
-<!-- ================= PROFILE ================= -->
+<!-- ===== PROFILE PAGE (DEFAULT) ===== -->
 <div id="profilePage" class="page active">
 
-  <!-- HERO -->
-  <div class="premium-hero">
-    <h1>Deekshitha ❤️ Prasad</h1>
-    <p>Our Forever Begins 💕</p>
+  <h1 class="title">Deekshitha ❤️ Prasad</h1>
+
+  <div id="countdown"></div>
+
+  <button onclick="addToCalendar()">📅 Add to Calendar</button>
+
+  <div class="profile-actions">
+    <button onclick="showPage('homePage')">📸 Posts</button>
+    <button onclick="showPage('reelsPage')">🎬 Reels</button>
   </div>
 
-  <!-- COUNTDOWN -->
-  <div id="countdown" class="premium-countdown"></div>
-
-  <!-- CALENDAR -->
-  <button class="premium-btn" onclick="addToCalendar()">📅 Add to Calendar</button>
-
-  <!-- EVENTS -->
-  <div class="premium-events">
-    <div class="event-card">
-      <h3>💍 Wedding</h3>
-      <p>May 1, 2026</p>
-    </div>
-
-    <div class="event-card">
-      <h3>🎉 Reception</h3>
-      <p>May 3, 2026</p>
-    </div>
-  </div>
-
-  <!-- STORY TIMELINE -->
-  <div id="timeline" class="timeline"></div>
+  <div id="profileGallery" class="grid"></div>
 
 </div>
 
+<!-- ===== HOME (STORIES + POSTS) ===== -->
+<div id="homePage" class="page">
 
-<!-- STORY -->
-<div id="storyModal" class="story-modal hidden" onclick="closeStory()">
-  <div class="progress"><div id="bar"></div></div>
-  <img id="storyImg">
+  <div id="stories" class="stories"></div>
+
+  <div id="posts"></div>
+
 </div>
 
-<!-- NAV -->
-<div class="bottom-nav">
-  <div onclick="showPage('homePage')">🏠</div>
-  <div onclick="showPage('searchPage')">🔍</div>
-  <div onclick="showPage('reelsPage')">🎬</div>
-  <div onclick="showPage('profilePage')">👤</div>
+<!-- ===== REELS ===== -->
+<div id="reelsPage" class="page"></div>
+
+<!-- ===== NAV ===== -->
+<div class="nav">
+  <button onclick="showPage('homePage')">🏠</button>
+  <button onclick="showPage('reelsPage')">🎬</button>
+  <button onclick="showPage('profilePage')">👤</button>
 </div>
 
 <script src="data.js"></script>
