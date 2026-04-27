@@ -41,13 +41,41 @@
 </div>
 
 <!-- NAV -->
-<div class="nav">
-  <button onclick="showTab('home')">🏠</button>
-  <button onclick="showTab('reels')">🎬</button>
-  <button onclick="shareSite()">📤</button>
-  <button onclick="showTab('search')">🔍</button>
-  <button onclick="showTab('profile')">👤</button>
+<div class="bottom-nav">
+  <!-- Home -->
+  <div onclick="showPage('homePage')">
+    <svg aria-label="Home" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+      <path d="M22 23h-6.001a1 1 0 0 1-1-1v-5.657a2.346 2.346 0 1 0-4.692 0V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V11.158a1 1 0 0 1 .317-.732l10-9.457a1 1 0 0 1 1.365 0l10 9.457a1 1 0 0 1 .318.732V22a1 1 0 0 1-1 1Z"></path>
+    </svg>
+  </div>
+
+  <!-- Search -->
+  <div onclick="showPage('searchPage')">
+    <svg aria-label="Search" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+      <path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+      <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16.511" x2="22" y1="16.511" y2="22"></line>
+    </svg>
+  </div>
+
+  <!-- Reels -->
+  <div onclick="showPage('reelsPage')">
+    <svg aria-label="Reels" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+      <rect fill="none" height="18" rx="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" x="2" y="3"></rect>
+      <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2" x2="22" y1="8" y2="8"></line>
+      <polygon points="10 12 10 18 15 15 10 12"></polygon>
+    </svg>
+  </div>
+
+  <!-- Profile -->
+  <div onclick="showPage('profilePage')">
+    <svg aria-label="Profile" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+      <circle cx="12.004" cy="12.004" fill="none" r="10.5" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></circle>
+      <path d="M18.791 21c-.419-3.412-3.154-6.046-6.463-6.046a6.442 6.442 0 0 0-6.423 5.49" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></path>
+      <circle cx="12.004" cy="8.807" fill="none" r="2.801" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"></circle>
+    </svg>
+  </div>
 </div>
+
 
 </div>
 
