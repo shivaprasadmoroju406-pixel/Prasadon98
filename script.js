@@ -95,14 +95,18 @@ DATA.reels.forEach(file=>{
 });
 
 setTimeout(()=>{
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      const v = e.target.querySelector("video");
-      e.isIntersecting ? v.play() : v.pause();
-    });
-  },{threshold:0.7});
+ const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    const video = entry.target.querySelector("video");
+    if(entry.isIntersecting){
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+},{threshold:0.8});
 
-  document.querySelectorAll(".reel").forEach(r=>obs.observe(r));
+document.querySelectorAll(".reel").forEach(r=>observer.observe(r));
 },500);
 
 // SEARCH + PROFILE GRID
@@ -127,4 +131,9 @@ function shareSite(){
     navigator.clipboard.writeText(location.href);
     alert("Link copied!");
   }
+}
+
+function showPage(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
 }
