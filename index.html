@@ -12,33 +12,28 @@
 
 <div class="app">
 
-<!-- HEADER -->
 <div class="header">WeddingGram 💍</div>
 
-<!-- STORIES -->
-<div class="stories" id="stories"></div>
+<div id="stories" class="stories"></div>
 
-<!-- HOME FEED -->
 <div id="home"></div>
 
-<!-- REELS -->
 <div id="reels" class="hidden"></div>
 
-<!-- SEARCH -->
 <div id="search" class="hidden">
-  <input type="text" placeholder="Search wedding info..." class="search-bar">
-  <div class="grid" id="grid"></div>
+  <input class="search-bar" placeholder="Search...">
+  <div id="grid" class="grid"></div>
 </div>
 
-<!-- PROFILE -->
 <div id="profile" class="hidden">
   <h2>Deekshitha ❤️ Prasad</h2>
   <p>Join us on our special day 💕</p>
-  <div class="grid" id="profileGrid"></div>
+  <div id="profileGrid" class="grid"></div>
 </div>
 
-<!-- STORY MODAL -->
+<!-- STORY VIEWER -->
 <div id="storyModal" class="story-modal hidden" onclick="closeStory()">
+  <div class="progress"><div id="bar" class="bar"></div></div>
   <img id="storyImg">
 </div>
 
@@ -53,6 +48,8 @@
 
 </div>
 
+<script src="data.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
