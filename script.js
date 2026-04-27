@@ -1,136 +1,7 @@
-let lastTap = 0;
-
-// NAVIGATION
-function showPage(page){
+/* ===== NAVIGATION ===== */
+function showPage(pageId){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(page).classList.add("active");
-}
-
-// FORMAT NAME
-function formatName(file){
-  return file.split('.')[0];
-}
-
-// INIT
-function init(){
-
-// STORIES
-DATA.stories.forEach((file,i)=>{
-  stories.innerHTML += `
-  <div class="story" onclick="openStory(${i})">
-    <img src="assets/stories/${file}">
-    <p>${formatName(file)}</p>
-  </div>`;
-});
-
-// POSTS
-DATA.posts.forEach((file,id)=>{
-  let comments = JSON.parse(localStorage.getItem(id)) || [];
-
-  home.innerHTML += `
-  <div class="post" ontouchend="doubleTap(event,this)">
-    <div class="post-header">
-      <img src="assets/images/${file}">
-      <b>${formatName(file)}</b>
-    </div>
-
-    <img class="main" src="assets/images/${file}">
-
-    <div class="actions">
-      <span onclick="like(this)">🤍</span> 💬 📤
-    </div>
-
-    <div class="caption"><b>${formatName(file)}</b> Best wishes 💕</div>
-
-    <div id="c${id}">
-      ${comments.map(c=>`<p>${c}</p>`).join("")}
-    </div>
-
-    <div class="comment-box">
-      <input id="i${id}">
-      <button onclick="comment(${id})">Post</button>
-    </div>
-  </div>`;
-
-  grid.innerHTML += `<img src="assets/images/${file}">`;
-  profileGrid.innerHTML += `<img src="assets/images/${file}">`;
-});
-
-// REELS
-DATA.reels.forEach(file=>{
-  reels.innerHTML += `
-  <div class="reel">
-    <video src="assets/reels/${file}" muted loop playsinline></video>
-  </div>`;
-});
-
-// AUTO PLAY
-setTimeout(()=>{
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      let v = e.target.querySelector("video");
-      e.isIntersecting ? v.play() : v.pause();
-    });
-  },{threshold:0.8});
-
-  document.querySelectorAll(".reel").forEach(r=>obs.observe(r));
-},500);
-
-}
-
-init();
-
-// LIKE
-function like(el){
-  el.innerHTML="❤️";
-}
-
-// DOUBLE TAP
-function doubleTap(e,el){
-  let now = new Date().getTime();
-  if(now - lastTap < 300){
-    el.querySelector("span").innerHTML="❤️";
-  }
-  lastTap = now;
-}
-
-// COMMENT
-function comment(id){
-  let val = document.getElementById("i"+id).value;
-  if(!val) return;
-
-  let arr = JSON.parse(localStorage.getItem(id)) || [];
-  arr.push(val);
-  localStorage.setItem(id,JSON.stringify(arr));
-
-  document.getElementById("c"+id).innerHTML += `<p>${val}</p>`;
-}
-
-// STORY
-let current = 0;
-
-function openStory(i){
-  current = i;
-  storyModal.classList.remove("hidden");
-  playStory();
-}
-
-function playStory(){
-  storyImg.src = "assets/stories/" + DATA.stories[current];
-
-  bar.style.width="0%";
-  setTimeout(()=>bar.style.width="100%",50);
-
-  setTimeout(()=>{
-    current++;
-    if(current < DATA.stories.length){
-      playStory();
-    } else closeStory();
-  },3000);
-}
-
-function closeStory(){
-  storyModal.classList.add("hidden");
+  document.getElementById(pageId).classList.add("active");
 }
 
 /* ===== COUNTDOWN ===== */
@@ -139,29 +10,72 @@ const weddingDate = new Date("May 1, 2026 10:00:00");
 setInterval(()=>{
   const now = new Date();
   const diff = weddingDate - now;
-
   const days = Math.floor(diff/(1000*60*60*24));
-  document.getElementById("countdown").innerText =
-    `⏳ ${days} days to go`;
-},1000);
 
+  document.getElementById("countdown").innerText =
+    "⏳ " + days + " days to go";
+},1000);
 
 /* ===== CALENDAR ===== */
 function addToCalendar(){
-  window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding");
+  const url = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+  +"&text=Deekshitha & Prasad Wedding"
+  +"&dates=20260501T100000/20260501T120000"
+  +"&location=Hyderabad Wedding Hall";
+
+  window.open(url);
 }
 
+/* ===== PROFILE ===== */
+const profileGallery = document.getElementById("profileGallery");
 
-/* ===== TIMELINE FROM STORIES FOLDER ===== */
-const timeline = document.getElementById("timeline");
+data.profile.forEach(file=>{
+  const img = document.createElement("img");
+  img.src = "assets/profile/" + file;
+
+  img.onclick = ()=>{
+    if(file.includes("reel")){
+      showPage("reelsPage");
+    } else {
+      showPage("homePage");
+    }
+  };
+
+  profileGallery.appendChild(img);
+});
+
+/* ===== STORIES ===== */
+const storiesDiv = document.getElementById("stories");
 
 data.stories.forEach(file=>{
+  const div = document.createElement("div");
+  div.className = "story";
+
+  div.innerHTML = `<img src="assets/stories/${file}">`;
+
+  storiesDiv.appendChild(div);
+});
+
+/* ===== POSTS ===== */
+const postsDiv = document.getElementById("posts");
+
+data.images.forEach(file=>{
   const img = document.createElement("img");
-  img.src = "assets/stories/" + file;
+  img.src = "assets/images/" + file;
 
-  /* dynamic animation */
-  if(file.includes("slide")) img.style.transform = "translateX(50px)";
-  if(file.includes("zoom")) img.style.transform = "scale(0.8)";
+  postsDiv.appendChild(img);
+});
 
-  timeline.appendChild(img);
+/* ===== REELS ===== */
+const reelsPage = document.getElementById("reelsPage");
+
+data.reels.forEach(file=>{
+  const div = document.createElement("div");
+  div.className = "reel";
+
+  div.innerHTML = `
+    <video src="assets/reels/${file}" autoplay loop muted></video>
+  `;
+
+  reelsPage.appendChild(div);
 });
