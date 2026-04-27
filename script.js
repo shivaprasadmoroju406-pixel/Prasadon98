@@ -132,3 +132,36 @@ function playStory(){
 function closeStory(){
   storyModal.classList.add("hidden");
 }
+
+/* ===== COUNTDOWN ===== */
+const weddingDate = new Date("May 1, 2026 10:00:00");
+
+setInterval(()=>{
+  const now = new Date();
+  const diff = weddingDate - now;
+
+  const days = Math.floor(diff/(1000*60*60*24));
+  document.getElementById("countdown").innerText =
+    `⏳ ${days} days to go`;
+},1000);
+
+
+/* ===== CALENDAR ===== */
+function addToCalendar(){
+  window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding");
+}
+
+
+/* ===== TIMELINE FROM STORIES FOLDER ===== */
+const timeline = document.getElementById("timeline");
+
+data.stories.forEach(file=>{
+  const img = document.createElement("img");
+  img.src = "assets/stories/" + file;
+
+  /* dynamic animation */
+  if(file.includes("slide")) img.style.transform = "translateX(50px)";
+  if(file.includes("zoom")) img.style.transform = "scale(0.8)";
+
+  timeline.appendChild(img);
+});
