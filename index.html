@@ -4,255 +4,154 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WeddingGram</title>
+<title>Deekshitha ❤️ Prasad</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
+<!-- ICONS -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-body {
-  margin: 0;
-  background: #000;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-}
-
-/* MOBILE APP CONTAINER */
-.app {
-  width: 100%;
-  max-width: 420px;
-  background: #000;
-  min-height: 100vh;
-}
-
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px;
-  font-size: 22px;
-  border-bottom: 1px solid #222;
-}
-
-.logo {
-  font-family: 'Grand Hotel', cursive;
-  font-size: 28px;
-}
-
-/* STORIES */
-.stories {
-  display: flex;
-  overflow-x: auto;
-  padding: 10px;
-  gap: 14px;
-}
-
-.story {
-  min-width: 70px;
-  text-align: center;
-}
-
-.story img {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  padding: 3px;
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
-}
-
-.story span {
-  display: block;
-  font-size: 12px;
-  margin-top: 5px;
-  color: white;
-}
-
-/* POST */
-.post {
-  margin-bottom: 20px;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.post-header img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.post img.main {
-  width: 100%;
-}
-
-/* ACTIONS */
-.actions {
-  display: flex;
-  gap: 16px;
-  padding: 10px;
-  font-size: 22px;
-}
-
-.actions span {
-  cursor: pointer;
-}
-
-/* TEXT */
-.caption, .comments {
-  padding: 0 10px;
-  font-size: 14px;
-}
-
-.comments {
-  color: #aaa;
-}
-
-/* COMMENT BOX */
-.comment-box {
-  display: flex;
-  border-top: 1px solid #222;
-}
-
-.comment-box input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: white;
-  padding: 10px;
-}
-
-.comment-box button {
-  background: none;
-  border: none;
-  color: #3897f0;
-  padding: 10px;
-}
-
-</style>
 </head>
 
 <body>
 
-<div class="app">
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h2>WeddingGram 💍</h2>
+            </div>
+        </div>
+    </nav>
+</header>
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="logo">WeddingGram</div>
-    ❤️
-  </div>
+<main>
+<div class="container">
 
-  <!-- STORIES -->
-  <div class="stories">
-    <div class="story">
-      <img src="assets/story1.jpg">
-      <span>Aarav</span>
-    </div>
+<div class="col-9">
 
-    <div class="story">
-      <img src="assets/story2.jpg">
-      <span>Meera</span>
-    </div>
+<!-- STORIES -->
+<div class="statuses">
 
-    <div class="story">
-      <img src="assets/story3.jpg">
-      <span>Kabir</span>
-    </div>
+<div class="status">
+<div class="image">
+<img src="assets/story1.jpg">
+</div>
+<p>Aarav</p>
+</div>
 
-    <div class="story">
-      <img src="assets/story4.jpg">
-      <span>Ravi</span>
-    </div>
-  </div>
+<div class="status">
+<div class="image">
+<img src="assets/story2.jpg">
+</div>
+<p>Meera</p>
+</div>
 
-  <!-- FEED -->
-  <div id="feed"></div>
+<div class="status">
+<div class="image">
+<img src="assets/story3.jpg">
+</div>
+<p>Kabir</p>
+</div>
+
+<div class="status">
+<div class="image">
+<img src="assets/story4.jpg">
+</div>
+<p>Ravi</p>
+</div>
 
 </div>
 
+<!-- POST 1 -->
+<div class="card">
+<div class="top">
+<div class="userDetails">
+<div class="profilepic">
+<div class="profile_img">
+<div class="image">
+<img src="assets/story2.jpg">
+</div>
+</div>
+</div>
+<h3>Meera<br><span>Best Friend</span></h3>
+</div>
+</div>
+
+<div class="imgBx">
+<img src="assets/post1.jpg" class="cover">
+</div>
+
+<div class="bottom">
+<div class="actionBtns">
+<div class="left">
+<span onclick="like(this)">❤️</span>
+</div>
+</div>
+
+<p class="likes">Liked by Rahul & others</p>
+
+<p class="message">
+<b>Meera</b> Wishing you both a lifetime of happiness 💕
+</p>
+
+<div class="addComments">
+<input type="text" placeholder="Add a comment...">
+<a href="#">Post</a>
+</div>
+
+</div>
+</div>
+
+<!-- POST 2 -->
+<div class="card">
+<div class="top">
+<div class="userDetails">
+<div class="profilepic">
+<div class="profile_img">
+<div class="image">
+<img src="assets/story3.jpg">
+</div>
+</div>
+</div>
+<h3>Kabir<br><span>College Friend</span></h3>
+</div>
+</div>
+
+<div class="imgBx">
+<img src="assets/post2.jpg" class="cover">
+</div>
+
+<div class="bottom">
+<div class="actionBtns">
+<div class="left">
+<span onclick="like(this)">❤️</span>
+</div>
+</div>
+
+<p class="likes">Liked by Ankit & others</p>
+
+<p class="message">
+<b>Kabir</b> Best couple ever 🔥
+</p>
+
+<div class="addComments">
+<input type="text" placeholder="Add a comment...">
+<a href="#">Post</a>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+</main>
+
 <script>
-
-const posts = [
-  {
-    user: "Meera",
-    profile: "assets/story2.jpg",
-    image: "assets/post1.jpg",
-    caption: "Best wishes to the couple ❤️"
-  },
-  {
-    user: "Kabir",
-    profile: "assets/story3.jpg",
-    image: "assets/post2.jpg",
-    caption: "Unforgettable memories 🔥"
-  }
-];
-
-const feed = document.getElementById("feed");
-
-posts.forEach((post, i) => {
-
-  const div = document.createElement("div");
-  div.className = "post";
-
-  div.innerHTML = `
-    <div class="post-header">
-      <img src="${post.profile}">
-      <b>${post.user}</b>
-    </div>
-
-    <img class="main" src="${post.image}">
-
-    <div class="actions">
-      <span onclick="like(this)">🤍</span>
-      <span onclick="focusInput(${i})">💬</span>
-      <span onclick="share()">✈️</span>
-    </div>
-
-    <div class="caption">
-      <b>${post.user}</b> ${post.caption}
-    </div>
-
-    <div class="comments" id="c${i}"></div>
-
-    <div class="comment-box">
-      <input id="i${i}" placeholder="Add a comment...">
-      <button onclick="add(${i})">Post</button>
-    </div>
-  `;
-
-  feed.appendChild(div);
-});
-
 function like(el){
-  el.textContent = el.textContent === "🤍" ? "❤️" : "🤍";
+  el.style.color = el.style.color === "red" ? "black" : "red";
 }
-
-function add(i){
-  const input = document.getElementById("i"+i);
-  const comments = document.getElementById("c"+i);
-
-  if(input.value){
-    const p = document.createElement("p");
-    p.textContent = input.value;
-    comments.appendChild(p);
-    input.value="";
-  }
-}
-
-function focusInput(i){
-  document.getElementById("i"+i).focus();
-}
-
-function share(){
-  navigator.clipboard.writeText(window.location.href);
-  alert("Link copied!");
-}
-
 </script>
 
 </body>
