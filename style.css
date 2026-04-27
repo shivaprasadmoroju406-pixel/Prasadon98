@@ -1,128 +1,135 @@
-body {
+body{
   margin:0;
   font-family:sans-serif;
-  background:#000;
-  color:#fff;
+  background:#fafafa;
 }
 
-.topbar {
+/* HEADER */
+.header{
   padding:10px;
-  text-align:center;
-  border-bottom:1px solid #222;
+  font-weight:bold;
+  font-size:20px;
+  border-bottom:1px solid #ddd;
 }
 
 /* STORIES */
-#stories {
+.stories{
   display:flex;
   overflow-x:auto;
   padding:10px;
 }
 
-.story {
-  margin-right:10px;
+.story{
   text-align:center;
+  margin-right:10px;
 }
 
-.story img {
+.story img{
   width:60px;
   height:60px;
   border-radius:50%;
-  border:2px solid pink;
+  border:2px solid hotpink;
 }
 
 /* POSTS */
-.post {
-  margin-bottom:20px;
+.post{
+  background:white;
+  margin-bottom:10px;
 }
 
-.post img.main {
-  width:100%;
-}
-
-.post-header {
+.post-header{
   display:flex;
   align-items:center;
   padding:10px;
 }
 
-.post-header img {
-  width:30px;
-  height:30px;
+.post-header img{
+  width:35px;
+  height:35px;
   border-radius:50%;
   margin-right:10px;
 }
 
-/* NAVBAR */
-.navbar {
+.post img.main{
+  width:100%;
+}
+
+.actions{
+  padding:10px;
+  font-size:20px;
+}
+
+.caption{
+  padding:0 10px 10px;
+}
+
+.comments{
+  padding:0 10px;
+  font-size:14px;
+}
+
+.comment-box{
+  display:flex;
+  border-top:1px solid #eee;
+}
+
+.comment-box input{
+  flex:1;
+  border:none;
+  padding:10px;
+}
+
+.comment-box button{
+  border:none;
+  background:none;
+  color:blue;
+}
+
+/* NAV */
+.nav{
   position:fixed;
   bottom:0;
   width:100%;
   display:flex;
   justify-content:space-around;
-  background:#000;
-  border-top:1px solid #222;
-  padding:10px 0;
-}
-
-.tab {
-  font-size:22px;
-  opacity:0.5;
-}
-
-.tab.active {
-  opacity:1;
-}
-
-/* PAGES */
-.page {
-  display:none;
-  padding-bottom:60px;
-}
-
-.page.active {
-  display:block;
+  background:white;
+  padding:10px;
+  border-top:1px solid #ddd;
 }
 
 /* REELS */
-#reelsPage {
+#reelsPage{
+  display:none;
   height:100vh;
   overflow-y:scroll;
   scroll-snap-type:y mandatory;
 }
 
-.reel {
+.reel{
   height:100vh;
   scroll-snap-align:start;
+  background:black;
 }
 
-.reel video {
+.reel video{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
 /* STORY VIEW */
-#storyViewer {
+#storyViewer{
+  display:none;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
   background:black;
-  display:none;
-  justify-content:center;
-  align-items:center;
 }
 
-#storyViewer img {
+#storyViewer img{
   width:100%;
-}
-
-.progress {
-  position:absolute;
-  top:0;
-  left:0;
-  height:5px;
-  background:white;
-  width:0%;
+  height:100%;
+  object-fit:cover;
 }
