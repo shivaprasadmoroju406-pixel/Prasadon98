@@ -1,139 +1,134 @@
-function formatName(file){
-  return file.split('.')[0]
-    .replace(/[-_]/g,' ')
-    .replace(/\b\w/g,c=>c.toUpperCase());
+let lastTap = 0;
+
+// NAVIGATION
+function showPage(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
 }
+
+// FORMAT NAME
+function formatName(file){
+  return file.split('.')[0];
+}
+
+// INIT
+function init(){
 
 // STORIES
 DATA.stories.forEach((file,i)=>{
-  const name = formatName(file);
-
   stories.innerHTML += `
   <div class="story" onclick="openStory(${i})">
     <img src="assets/stories/${file}">
-    <p>${name}</p>
+    <p>${formatName(file)}</p>
   </div>`;
 });
 
 // POSTS
 DATA.posts.forEach((file,id)=>{
-  const name = formatName(file);
-  let comments = JSON.parse(localStorage.getItem("c"+id)) || [];
+  let comments = JSON.parse(localStorage.getItem(id)) || [];
 
   home.innerHTML += `
   <div class="post" ontouchend="doubleTap(event,this)">
-    
     <div class="post-header">
       <img src="assets/images/${file}">
-      <b>${name}</b>
+      <b>${formatName(file)}</b>
     </div>
 
     <img class="main" src="assets/images/${file}">
 
-    <div class="actions">🤍 💬 📤</div>
+    <div class="actions">
+      <span onclick="like(this)">🤍</span> 💬 📤
+    </div>
 
-    <div class="caption"><b>${name}</b> Best wishes 💕</div>
+    <div class="caption"><b>${formatName(file)}</b> Best wishes 💕</div>
 
-    <div class="comments" id="c${id}">
+    <div id="c${id}">
       ${comments.map(c=>`<p>${c}</p>`).join("")}
     </div>
 
     <div class="comment-box">
       <input id="i${id}">
-      <button onclick="addComment(${id})">Post</button>
+      <button onclick="comment(${id})">Post</button>
     </div>
-
   </div>`;
+
+  grid.innerHTML += `<img src="assets/images/${file}">`;
+  profileGrid.innerHTML += `<img src="assets/images/${file}">`;
 });
-
-// COMMENTS
-function addComment(id){
-  const input = document.getElementById("i"+id);
-  let comments = JSON.parse(localStorage.getItem("c"+id)) || [];
-
-  comments.push(input.value);
-  localStorage.setItem("c"+id, JSON.stringify(comments));
-
-  location.reload();
-}
-
-// DOUBLE TAP
-let lastTap = 0;
-function doubleTap(e,el){
-  let now = new Date().getTime();
-  if(now - lastTap < 300){
-    const heart = document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="❤️";
-    el.appendChild(heart);
-    setTimeout(()=>heart.remove(),600);
-  }
-  lastTap = now;
-}
-
-// STORY
-function openStory(i){
-  storyModal.classList.remove("hidden");
-  storyImg.src = "assets/stories/"+DATA.stories[i];
-
-  bar.style.width="0%";
-  setTimeout(()=>{ bar.style.width="100%"; },100);
-
-  setTimeout(closeStory,3000);
-}
-
-function closeStory(){
-  storyModal.classList.add("hidden");
-}
 
 // REELS
 DATA.reels.forEach(file=>{
   reels.innerHTML += `
   <div class="reel">
-    <video src="assets/reels/${file}" muted loop></video>
+    <video src="assets/reels/${file}" muted loop playsinline></video>
   </div>`;
 });
 
+// AUTO PLAY
 setTimeout(()=>{
- const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    const video = entry.target.querySelector("video");
-    if(entry.isIntersecting){
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
-},{threshold:0.8});
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      let v = e.target.querySelector("video");
+      e.isIntersecting ? v.play() : v.pause();
+    });
+  },{threshold:0.8});
 
-document.querySelectorAll(".reel").forEach(r=>observer.observe(r));
+  document.querySelectorAll(".reel").forEach(r=>obs.observe(r));
 },500);
 
-// SEARCH + PROFILE GRID
-[...DATA.posts].forEach(file=>{
-  grid.innerHTML += `<img src="assets/images/${file}">`;
-  profileGrid.innerHTML += `<img src="assets/images/${file}">`;
-});
-
-// NAV
-function showTab(tab){
-  ["home","reels","search","profile"].forEach(id=>{
-    document.getElementById(id).classList.add("hidden");
-  });
-  document.getElementById(tab).classList.remove("hidden");
 }
 
-// SHARE
-function shareSite(){
-  if(navigator.share){
-    navigator.share({title:"Wedding",url:location.href});
-  } else {
-    navigator.clipboard.writeText(location.href);
-    alert("Link copied!");
+init();
+
+// LIKE
+function like(el){
+  el.innerHTML="❤️";
+}
+
+// DOUBLE TAP
+function doubleTap(e,el){
+  let now = new Date().getTime();
+  if(now - lastTap < 300){
+    el.querySelector("span").innerHTML="❤️";
   }
+  lastTap = now;
 }
 
-function showPage(page){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(page).classList.add("active");
+// COMMENT
+function comment(id){
+  let val = document.getElementById("i"+id).value;
+  if(!val) return;
+
+  let arr = JSON.parse(localStorage.getItem(id)) || [];
+  arr.push(val);
+  localStorage.setItem(id,JSON.stringify(arr));
+
+  document.getElementById("c"+id).innerHTML += `<p>${val}</p>`;
+}
+
+// STORY
+let current = 0;
+
+function openStory(i){
+  current = i;
+  storyModal.classList.remove("hidden");
+  playStory();
+}
+
+function playStory(){
+  storyImg.src = "assets/stories/" + DATA.stories[current];
+
+  bar.style.width="0%";
+  setTimeout(()=>bar.style.width="100%",50);
+
+  setTimeout(()=>{
+    current++;
+    if(current < DATA.stories.length){
+      playStory();
+    } else closeStory();
+  },3000);
+}
+
+function closeStory(){
+  storyModal.classList.add("hidden");
 }
