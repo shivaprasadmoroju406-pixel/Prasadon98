@@ -11,36 +11,36 @@
 
 <!-- ================= HOME ================= -->
 <div id="homePage" class="page active">
-<div class="header">WeddingGram 💍</div>
-<div id="stories" class="stories"></div>
-<div id="home"></div>
+  <div class="header">WeddingGram 💍</div>
+  <div id="stories" class="stories"></div>
+  <div id="home"></div>
 </div>
 
 <!-- ================= REELS ================= -->
 <div id="reelsPage" class="page">
-<div class="reels-container" id="reels"></div>
+  <div class="reels-container" id="reels"></div>
 </div>
 
 <!-- ================= SEARCH ================= -->
 <div id="searchPage" class="page">
-<input class="search-bar" placeholder="Search...">
-<div id="grid" class="grid"></div>
+  <input class="search-bar" placeholder="Search...">
+  <div id="grid" class="grid"></div>
 </div>
 
 <!-- ================= PROFILE ================= -->
 <div id="profilePage" class="page">
+
   <div class="profile-header">
     <h2>Deekshitha ❤️ Prasad</h2>
     <p>Join us on our special day 💕</p>
+  </div>
 
   <!-- HERO -->
   <div class="profile-hero">
     <h1>Deekshitha ❤️ Prasad</h1>
     <p>We invite you to celebrate our love 💕</p>
-</div>
+  </div>
 
-  <div class="wedding-details">
-    <h3>💍 Wedding Details</h3>
   <!-- EVENTS -->
   <div class="event-list">
 
@@ -54,8 +54,6 @@
       </div>
     </div>
 
-    <p><b>Sumuhurtham:</b><br>
-    On Friday 1st May 2026 at 10-12 a.m.</p>
     <div class="event-card">
       <div class="event-icon">🪔</div>
       <div class="event-info">
@@ -65,9 +63,6 @@
       </div>
     </div>
 
-    <p><b>Venue:</b><br>
-    S.N.R. Gardens, Hyderabad<br>
-    <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">📍 View Location</a></p>
     <div class="event-card">
       <div class="event-icon">🎉</div>
       <div class="event-info">
@@ -78,34 +73,35 @@
       </div>
     </div>
 
-    <p><b>Vratham:</b><br>
-    2nd May 2026 at 11:00 a.m.</p>
   </div>
 
-    <p><b>Reception:</b><br>
-    3rd May 2026 at 7:30 p.m.<br>
-    <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">📍 View Location</a></p>
+  <!-- DETAILS -->
+  <div class="wedding-details">
+    <p><b>Sumuhurtham:</b> Friday 1st May 2026 (10-12 a.m.)</p>
+    <p><b>Vratham:</b> 2nd May 2026 (11:00 a.m.)</p>
+    <p><b>Reception:</b> 3rd May 2026 (7:30 p.m.)</p>
+  </div>
+
   <!-- GALLERY -->
   <div class="profile-gallery">
     <h3>Memories 💖</h3>
     <div id="profileGrid" class="grid"></div>
+  </div>
+
 </div>
 
-  <div id="profileGrid" class="grid"></div>
-</div>
-
-<!-- STORY -->
+<!-- STORY MODAL -->
 <div id="storyModal" class="story-modal hidden" onclick="closeStory()">
-<div class="progress"><div id="bar"></div></div>
-<img id="storyImg">
+  <div class="progress"><div id="bar"></div></div>
+  <img id="storyImg">
 </div>
 
 <!-- NAV -->
 <div class="bottom-nav">
-<div onclick="showPage('homePage')">🏠</div>
-<div onclick="showPage('searchPage')">🔍</div>
-<div onclick="showPage('reelsPage')">🎬</div>
-<div onclick="showPage('profilePage')">👤</div>
+  <div onclick="showPage('homePage')">🏠</div>
+  <div onclick="showPage('searchPage')">🔍</div>
+  <div onclick="showPage('reelsPage')">🎬</div>
+  <div onclick="showPage('profilePage')">👤</div>
 </div>
 
 <script src="data.js"></script>
