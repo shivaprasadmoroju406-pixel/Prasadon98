@@ -1,71 +1,52 @@
-// DATA
-const stories = [
-  {name:"Aarav", img:"assets/story1.jpg"},
-  {name:"Meera", img:"assets/story2.jpg"}
-];
-
-const posts = [
-  {
-    id:1,
-    user:"Meera",
-    profile:"assets/story2.jpg",
-    image:"assets/post1.jpg",
-    caption:"Best wishes 💕"
-  }
-];
-
-const reelsData = [
-  {video:"assets/reel1.mp4"}
-];
-
-const gridImages = [
-  "assets/post1.jpg",
-  "assets/post2.jpg",
-  "assets/qr1.png"
-];
+function formatName(file){
+  return file.split('.')[0]
+    .replace(/[-_]/g,' ')
+    .replace(/\b\w/g,c=>c.toUpperCase());
+}
 
 // STORIES
-stories.forEach((s,i)=>{
-  document.getElementById("stories").innerHTML += `
+DATA.stories.forEach((file,i)=>{
+  const name = formatName(file);
+
+  stories.innerHTML += `
   <div class="story" onclick="openStory(${i})">
-    <img src="${s.img}">
-    <p>${s.name}</p>
+    <img src="assets/stories/${file}">
+    <p>${name}</p>
   </div>`;
 });
 
-// POSTS + COMMENTS
-posts.forEach(p=>{
-  const comments = JSON.parse(localStorage.getItem("c"+p.id)) || [];
+// POSTS
+DATA.posts.forEach((file,id)=>{
+  const name = formatName(file);
+  let comments = JSON.parse(localStorage.getItem("c"+id)) || [];
 
-  let commentsHTML = comments.map(c=>`<p>${c}</p>`).join("");
-
-  document.getElementById("home").innerHTML += `
-  <div class="post">
+  home.innerHTML += `
+  <div class="post" ontouchend="doubleTap(event,this)">
+    
     <div class="post-header">
-      <img src="${p.profile}">
-      <b>${p.user}</b>
+      <img src="assets/images/${file}">
+      <b>${name}</b>
     </div>
 
-    <img class="main" src="${p.image}">
+    <img class="main" src="assets/images/${file}">
 
-    <div class="actions">
-      ❤️ 💬 <span onclick="shareSite()">📤</span>
-    </div>
+    <div class="actions">🤍 💬 📤</div>
 
-    <div class="caption"><b>${p.user}</b> ${p.caption}</div>
+    <div class="caption"><b>${name}</b> Best wishes 💕</div>
 
-    <div class="comments" id="c${p.id}">
-      ${commentsHTML}
+    <div class="comments" id="c${id}">
+      ${comments.map(c=>`<p>${c}</p>`).join("")}
     </div>
 
     <div class="comment-box">
-      <input id="i${p.id}" placeholder="Add comment">
-      <button onclick="addComment(${p.id})">Post</button>
+      <input id="i${id}">
+      <button onclick="addComment(${id})">Post</button>
     </div>
+
   </div>`;
 });
 
-// ADD COMMENT
+// COMMENTS
 function addComment(id){
   const input = document.getElementById("i"+id);
   let comments = JSON.parse(localStorage.getItem("c"+id)) || [];
@@ -76,31 +57,61 @@ function addComment(id){
   location.reload();
 }
 
+// DOUBLE TAP
+let lastTap = 0;
+function doubleTap(e,el){
+  let now = new Date().getTime();
+  if(now - lastTap < 300){
+    const heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    el.appendChild(heart);
+    setTimeout(()=>heart.remove(),600);
+  }
+  lastTap = now;
+}
+
 // STORY
 function openStory(i){
-  document.getElementById("storyModal").classList.remove("hidden");
-  document.getElementById("storyImg").src = stories[i].img;
+  storyModal.classList.remove("hidden");
+  storyImg.src = "assets/stories/"+DATA.stories[i];
+
+  bar.style.width="0%";
+  setTimeout(()=>{ bar.style.width="100%"; },100);
+
+  setTimeout(closeStory,3000);
 }
 
 function closeStory(){
-  document.getElementById("storyModal").classList.add("hidden");
+  storyModal.classList.add("hidden");
 }
 
 // REELS
-reelsData.forEach(r=>{
-  document.getElementById("reels").innerHTML += `
+DATA.reels.forEach(file=>{
+  reels.innerHTML += `
   <div class="reel">
-    <video src="${r.video}" muted loop autoplay></video>
+    <video src="assets/reels/${file}" muted loop></video>
   </div>`;
 });
 
-// SEARCH GRID
-gridImages.forEach(img=>{
-  document.getElementById("grid").innerHTML += `<img src="${img}">`;
-  document.getElementById("profileGrid").innerHTML += `<img src="${img}">`;
+setTimeout(()=>{
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      const v = e.target.querySelector("video");
+      e.isIntersecting ? v.play() : v.pause();
+    });
+  },{threshold:0.7});
+
+  document.querySelectorAll(".reel").forEach(r=>obs.observe(r));
+},500);
+
+// SEARCH + PROFILE GRID
+[...DATA.posts].forEach(file=>{
+  grid.innerHTML += `<img src="assets/images/${file}">`;
+  profileGrid.innerHTML += `<img src="assets/images/${file}">`;
 });
 
-// NAVIGATION
+// NAV
 function showTab(tab){
   ["home","reels","search","profile"].forEach(id=>{
     document.getElementById(id).classList.add("hidden");
@@ -111,12 +122,9 @@ function showTab(tab){
 // SHARE
 function shareSite(){
   if(navigator.share){
-    navigator.share({
-      title:"Wedding Invite",
-      url:window.location.href
-    });
+    navigator.share({title:"Wedding",url:location.href});
   } else {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(location.href);
     alert("Link copied!");
   }
 }
