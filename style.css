@@ -127,6 +127,13 @@ body{
   height:100%;
   background:black;
 }
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
 
 #storyViewer img{
   width:100%;
