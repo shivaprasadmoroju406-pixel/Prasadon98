@@ -246,3 +246,83 @@ body{
 .hidden{
   display:none;
 }
+
+/* ===== PROFILE HERO ===== */
+.profile-hero{
+  text-align:center;
+  padding:30px 20px 10px;
+}
+
+.profile-hero h1{
+  font-size:26px;
+  margin:0;
+  background:linear-gradient(45deg,#ff4d88,#ffcc00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.profile-hero p{
+  opacity:0.7;
+  margin-top:5px;
+}
+
+/* ===== EVENT LIST ===== */
+.event-list{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* ===== EVENT CARD ===== */
+.event-card{
+  display:flex;
+  gap:15px;
+  padding:15px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#1c1c22,#121216);
+  box-shadow:0 6px 25px rgba(0,0,0,0.5);
+  transition:0.3s;
+}
+
+.event-card:hover{
+  transform:translateY(-3px);
+}
+
+/* ICON */
+.event-icon{
+  font-size:28px;
+}
+
+/* INFO */
+.event-info h3{
+  margin:0;
+  font-size:18px;
+}
+
+.event-info p{
+  margin:3px 0;
+  opacity:0.8;
+}
+
+.event-info span{
+  font-size:13px;
+  opacity:0.6;
+}
+
+.event-info a{
+  display:inline-block;
+  margin-top:6px;
+  color:#ff4d88;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== GALLERY ===== */
+.profile-gallery{
+  padding:10px;
+}
+
+.profile-gallery h3{
+  margin-left:5px;
+}
