@@ -155,7 +155,23 @@ body {
 .page.active{
   display:block;
 }
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:60px;
+  background:#fff;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid #ddd;
+  z-index:999;
+}
 
+.bottom-nav div{
+  font-size:24px;
+  cursor:pointer;
+}
 .reels-container{
   height:100vh;
   overflow-y:scroll;
