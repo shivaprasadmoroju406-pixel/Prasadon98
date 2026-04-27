@@ -1,73 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WeddingGram 💍</title>
+<title>Wedding Insta Invite</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HOME -->
-<div id="homePage" class="page active">
-  <div class="header">WeddingGram 💍</div>
-  <div id="stories" class="stories"></div>
-  <div id="home"></div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <h2>WeddingGram 💍</h2>
 </div>
 
-<!-- REELS -->
-<div id="reelsPage" class="page">
-  <div class="reels-container" id="reels"></div>
-</div>
+<!-- STORIES -->
+<div id="stories"></div>
 
-<!-- SEARCH -->
-<div id="searchPage" class="page">
-  <input class="search-bar" placeholder="Search...">
-  <div id="grid" class="grid"></div>
-</div>
+<!-- HOME FEED -->
+<div id="home" class="page active"></div>
 
-<!-- PROFILE -->
-<div id="profilePage" class="page">
-  <div class="profile-header">
-    <h2>Deekshitha ❤️ Prasad</h2>
-    <p>Join us on our special day 💕</p>
-  </div>
+<!-- REELS PAGE -->
+<div id="reelsPage" class="page"></div>
 
-  <div class="wedding-details">
-    <h3>💍 Wedding Details</h3>
+<!-- PROFILE PAGE -->
+<div id="profilePage" class="page"></div>
 
-    <p><b>Sumuhurtham:</b><br>
-    On Friday 1st May 2026 at 10-12 a.m.</p>
-
-    <p><b>Venue:</b><br>
-    S.N.R. Gardens, Sai Nagar Kompally, Hyderabad.<br>
-    <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">📍 View Location</a></p>
-
-    <p><b>Vratham:</b><br>
-    On Saturday 2nd May 2026 at 11:00 a.m. at Our Residence</p>
-
-    <p><b>Reception:</b><br>
-    On Sunday 3rd May 2026 at 7:30 p.m.<br>
-    MNR Convention A/c. Balaji Homes, Marriguda Bypass, Nalgonda.<br>
-    <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">📍 View Location</a></p>
-  </div>
-
-  <div id="profileGrid" class="grid"></div>
-</div>
-
-<!-- STORY MODAL -->
-<div id="storyModal" class="story-modal hidden" onclick="closeStory()">
-  <div class="progress"><div id="bar" class="bar"></div></div>
+<!-- STORY VIEW -->
+<div id="storyViewer" onclick="closeStory()">
+  <div class="progress"></div>
   <img id="storyImg">
 </div>
 
-<!-- NAV -->
-<div class="bottom-nav">
-  <div onclick="showPage('homePage')">🏠</div>
-  <div onclick="showPage('searchPage')">🔍</div>
-  <div onclick="showPage('reelsPage')">🎬</div>
-  <div onclick="showPage('profilePage')">👤</div>
+<!-- BOTTOM NAV (INSTAGRAM STYLE) -->
+<div class="navbar">
+  <div onclick="switchTab('home')" class="tab active">🏠</div>
+  <div onclick="switchTab('reels')" class="tab">🎬</div>
+  <div onclick="switchTab('profile')" class="tab">👤</div>
 </div>
 
 <script src="script.js"></script>
