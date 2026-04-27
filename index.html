@@ -1,84 +1,195 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>deekshitha Weds Prasad</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7efe6" />
+  <title>Wedding Invitation Social</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-badge" aria-hidden="true">◆</div>
+        <div>
+          <p class="eyebrow">Wedding Invitation</p>
+          <h1 id="weddingTitle">Deekshitha &amp; Prasad</h1>
+          <p class="subtle" id="weddingSubtitle">A social-style invite for friends, family, and memories</p>
+        </div>
+      </div>
 
-<!-- BACKGROUND -->
-<div id="bgSlider"></div>
+      <button class="profile-shortcut" id="profileShortcut" type="button" aria-label="Open account">
+        <span class="profile-shortcut-ring">
+          <span class="profile-shortcut-avatar">DP</span>
+        </span>
+      </button>
+    </header>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-  <source src="music/song.mp3" type="audio/mpeg">
-</audio>
+    <main class="app-main">
+      <!-- HOME -->
+      <section class="view active" id="view-home" data-view="home" aria-label="Home">
+        <section class="hero-card">
+          <p class="eyebrow">You're invited</p>
+          <h2>Celebrate love in a modern social story</h2>
+          <p class="hero-copy">
+            Save the date, explore the moments, send wishes, and share the invite with one tap.
+          </p>
 
-<!-- LANDING -->
-<div class="section active" id="landing">
-  <h1>💍 Prasad Weds Deekshitha 💍</h1>
-  <p>Will you come to our wedding? 😄</p>
+          <div class="hero-meta">
+            <span>11 May 2026</span>
+            <span>Hyderabad</span>
+            <span>Reception to follow</span>
+          </div>
+        </section>
 
-  <div>
-    <button onclick="startInvite()">YES 😍</button>
-    <button id="noBtn">NO 😏</button>
+        <div class="section-head">
+          <h3>Stories</h3>
+          <span class="section-hint">Tap a circle to view</span>
+        </div>
+        <div id="storiesStrip" class="stories-strip" aria-label="Stories strip"></div>
+
+        <div class="section-head">
+          <h3>Friend feed</h3>
+          <span class="section-hint">Best wishes from friends</span>
+        </div>
+        <div id="feedList" class="feed-list" aria-label="Wedding feed"></div>
+      </section>
+
+      <!-- REELS -->
+      <section class="view" id="view-reels" data-view="reels" aria-label="Reels">
+        <div class="section-head section-head-wide">
+          <div>
+            <h3>Reels</h3>
+            <span class="section-hint">Engagement teasers and highlight clips</span>
+          </div>
+        </div>
+        <div id="reelsStage" class="reels-stage" aria-label="Scrollable reels feed"></div>
+      </section>
+
+      <!-- SHARE -->
+      <section class="view" id="view-share" data-view="share" aria-label="Share">
+        <div class="share-panel">
+          <p class="eyebrow">Share invite</p>
+          <h2>Send the wedding page to family and friends</h2>
+          <p class="share-copy">
+            Use the share sheet on mobile or copy the link instantly for WhatsApp, Messages, or email.
+          </p>
+
+          <div class="share-link-box">
+            <div>
+              <p class="mini-label">Page link</p>
+              <p id="shareLinkText" class="share-link-text">Loading…</p>
+            </div>
+            <button class="icon-button" id="copyShareLinkBtn" type="button">Copy</button>
+          </div>
+
+          <div class="share-actions">
+            <button class="primary-button" id="webShareBtn" type="button">Share page</button>
+            <button class="secondary-button" id="copyShareLinkBtn2" type="button">Copy link</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEARCH -->
+      <section class="view" id="view-search" data-view="search" aria-label="Search">
+        <div class="section-head section-head-wide">
+          <div>
+            <h3>Search</h3>
+            <span class="section-hint">Wedding location, reception, QR cards, and more</span>
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search wedding location, reception, dress code…" autocomplete="off" />
+        </div>
+
+        <div id="suggestionChips" class="suggestion-chips" aria-label="Static suggestions"></div>
+        <div id="exploreGrid" class="explore-grid" aria-label="Explore grid"></div>
+      </section>
+
+      <!-- ACCOUNT / PROFILE -->
+      <section class="view" id="view-profile" data-view="profile" aria-label="Account">
+        <div class="profile-hero">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar">DP</div>
+          </div>
+
+          <div class="profile-copy">
+            <p class="eyebrow">Wedding account</p>
+            <h2 id="profileNames">Deekshitha &amp; Prasad</h2>
+            <p id="profileBio" class="profile-bio">
+              A joyful invitation page for the engagement, wedding, and reception moments.
+            </p>
+
+            <div class="profile-actions">
+              <button class="primary-button" id="openCommentsPanelBtn" type="button">View all comments</button>
+              <button class="secondary-button" id="jumpToStoriesBtn" type="button">View stories</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-grid" id="detailsGrid" aria-label="Wedding details"></div>
+
+        <div class="section-head">
+          <h3>Moments</h3>
+          <span class="section-hint">Photos and videos from the celebration</span>
+        </div>
+        <div id="momentsGrid" class="moments-grid" aria-label="Moments gallery"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Bottom navigation">
+      <button class="nav-item active" type="button" data-nav="home">
+        <span class="nav-icon">⌂</span>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="reels">
+        <span class="nav-icon">▣</span>
+        <span>Reels</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="share">
+        <span class="nav-icon">↗</span>
+        <span>Share</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="search">
+        <span class="nav-icon">⌕</span>
+        <span>Search</span>
+      </button>
+      <button class="nav-item" type="button" data-nav="profile">
+        <span class="nav-icon">◉</span>
+        <span>Account</span>
+      </button>
+    </nav>
+
+    <!-- MEDIA MODAL -->
+    <div class="modal" id="mediaModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-sheet">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close preview">×</button>
+        <div id="mediaModalBody"></div>
+      </div>
+    </div>
+
+    <!-- COMMENTS DRAWER -->
+    <div class="drawer" id="commentsDrawer" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="drawer-backdrop" data-close-comments></div>
+      <aside class="drawer-sheet">
+        <div class="drawer-head">
+          <div>
+            <p class="eyebrow">Admin panel</p>
+            <h3>All guest comments</h3>
+          </div>
+          <button class="modal-close" type="button" data-close-comments aria-label="Close comments panel">×</button>
+        </div>
+        <div id="commentsPanelBody" class="comments-panel-body"></div>
+      </aside>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </div>
-</div>
 
-<!-- MAIN -->
-<div class="section" id="main">
-  <h1>You're Invited 🎉</h1>
-  <p>Scroll Down ↓</p>
-</div>
-
-<!-- DETAILS -->
-<div class="section" id="details">
-  <h1>Wedding Details 💍</h1>
-
-  <p><b>Sumuhurtham:</b><br>
-  Friday 1st May 2026<br>
-  10:00 AM – 12:00 PM</p>
-
-  <p><b>Venue:</b><br>
-  S.N.R. Gardens, Sai Nagar Kompally, Hyderabad</p>
-
-  <a href="https://maps.app.goo.gl/Y3QGjgfo3QVvBMjx7?g_st=ic" target="_blank">
-    <button>Open Location 📍</button>
-  </a>
-
-  <p><b>Vratham:</b><br>
-  Saturday 2nd May 2026<br>
-  11:00 AM at Our Residence</p>
-
-  <p><b>Reception:</b><br>
-  Sunday 3rd May 2026<br>
-  7:30 PM<br>
-  MNR Convention A/c, Nalgonda</p>
-
-  <a href="https://maps.app.goo.gl/az7Q74on73bPLgwZ7?g_st=ic" target="_blank">
-    <button>Reception Location 📍</button>
-  </a>
-
-</div>
-
-<!-- END -->
-<div class="section" id="end">
-  <h1>See You There ❤️</h1>
-</div>
-
-<!-- NAV -->
-<div class="nav-buttons" id="navButtons">
-  <button onclick="navigate(-1)">↑</button>
-  <button onclick="navigate(1)">↓</button>
-</div>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
