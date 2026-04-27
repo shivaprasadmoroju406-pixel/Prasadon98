@@ -4,22 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wedding Social Invite</title>
+<title>WeddingGram</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: #000;
   font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
 }
 
-body {
+/* MOBILE APP CONTAINER */
+.app {
+  width: 100%;
+  max-width: 420px;
   background: #000;
-  color: #fff;
+  min-height: 100vh;
 }
 
 /* HEADER */
@@ -27,14 +31,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 14px;
   font-size: 22px;
-  font-weight: 600;
   border-bottom: 1px solid #222;
 }
 
-.header span {
-  font-size: 26px;
+.logo {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 28px;
 }
 
 /* STORIES */
@@ -42,29 +46,30 @@ body {
   display: flex;
   overflow-x: auto;
   padding: 10px;
-  gap: 12px;
-  border-bottom: 1px solid #222;
+  gap: 14px;
 }
 
 .story {
+  min-width: 70px;
   text-align: center;
-  min-width: 75px;
 }
 
 .story img {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
-  padding: 2px;
-  background: linear-gradient(45deg, orange, pink);
+  padding: 3px;
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
 }
 
-.story p {
+.story span {
+  display: block;
   font-size: 12px;
   margin-top: 5px;
+  color: white;
 }
 
-/* POSTS */
+/* POST */
 .post {
   margin-bottom: 20px;
 }
@@ -76,47 +81,42 @@ body {
 }
 
 .post-header img {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
 .post img.main {
   width: 100%;
-  height: auto;
 }
 
 /* ACTIONS */
 .actions {
   display: flex;
-  gap: 15px;
+  gap: 16px;
   padding: 10px;
   font-size: 22px;
+}
+
+.actions span {
   cursor: pointer;
 }
 
-.actions span:hover {
-  opacity: 0.7;
-}
-
-/* CAPTION */
-.caption {
-  padding: 0 10px 10px;
+/* TEXT */
+.caption, .comments {
+  padding: 0 10px;
   font-size: 14px;
 }
 
-/* COMMENTS */
 .comments {
-  padding: 0 10px;
-  font-size: 13px;
   color: #aaa;
 }
 
+/* COMMENT BOX */
 .comment-box {
   display: flex;
   border-top: 1px solid #222;
-  margin-top: 10px;
 }
 
 .comment-box input {
@@ -132,7 +132,6 @@ body {
   border: none;
   color: #3897f0;
   padding: 10px;
-  cursor: pointer;
 }
 
 </style>
@@ -140,34 +139,41 @@ body {
 
 <body>
 
-<div class="header">
-  <span>WeddingGram</span>
-  ❤️
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">WeddingGram</div>
+    ❤️
+  </div>
+
+  <!-- STORIES -->
+  <div class="stories">
+    <div class="story">
+      <img src="assets/story1.jpg">
+      <span>Aarav</span>
+    </div>
+
+    <div class="story">
+      <img src="assets/story2.jpg">
+      <span>Meera</span>
+    </div>
+
+    <div class="story">
+      <img src="assets/story3.jpg">
+      <span>Kabir</span>
+    </div>
+
+    <div class="story">
+      <img src="assets/story4.jpg">
+      <span>Ravi</span>
+    </div>
+  </div>
+
+  <!-- FEED -->
+  <div id="feed"></div>
+
 </div>
-
-<!-- STORIES -->
-<div class="stories">
-
-  <div class="story">
-    <img src="assets/story1.jpg">
-    <p>Aarav</p>
-  </div>
-
-  <div class="story">
-    <img src="assets/story2.jpg">
-    <p>Meera</p>
-  </div>
-
-  <div class="story">
-    <img src="assets/story3.jpg">
-    <p>Kabir</p>
-  </div>
-
-</div>
-
-<!-- POSTS -->
-
-<div id="feed"></div>
 
 <script>
 
@@ -176,24 +182,24 @@ const posts = [
     user: "Meera",
     profile: "assets/story2.jpg",
     image: "assets/post1.jpg",
-    caption: "Best wishes ❤️"
+    caption: "Best wishes to the couple ❤️"
   },
   {
     user: "Kabir",
     profile: "assets/story3.jpg",
     image: "assets/post2.jpg",
-    caption: "Amazing memories 🔥"
+    caption: "Unforgettable memories 🔥"
   }
 ];
 
 const feed = document.getElementById("feed");
 
-posts.forEach((post, index) => {
+posts.forEach((post, i) => {
 
-  const postDiv = document.createElement("div");
-  postDiv.className = "post";
+  const div = document.createElement("div");
+  div.className = "post";
 
-  postDiv.innerHTML = `
+  div.innerHTML = `
     <div class="post-header">
       <img src="${post.profile}">
       <b>${post.user}</b>
@@ -202,47 +208,47 @@ posts.forEach((post, index) => {
     <img class="main" src="${post.image}">
 
     <div class="actions">
-      <span onclick="likePost(this)">🤍</span>
-      <span onclick="focusComment(${index})">💬</span>
-      <span onclick="sharePost()">✈️</span>
+      <span onclick="like(this)">🤍</span>
+      <span onclick="focusInput(${i})">💬</span>
+      <span onclick="share()">✈️</span>
     </div>
 
     <div class="caption">
       <b>${post.user}</b> ${post.caption}
     </div>
 
-    <div class="comments" id="comments-${index}"></div>
+    <div class="comments" id="c${i}"></div>
 
     <div class="comment-box">
-      <input id="input-${index}" placeholder="Add a comment...">
-      <button onclick="addComment(${index})">Post</button>
+      <input id="i${i}" placeholder="Add a comment...">
+      <button onclick="add(${i})">Post</button>
     </div>
   `;
 
-  feed.appendChild(postDiv);
+  feed.appendChild(div);
 });
 
-function likePost(el) {
+function like(el){
   el.textContent = el.textContent === "🤍" ? "❤️" : "🤍";
 }
 
-function addComment(index) {
-  const input = document.getElementById(`input-${index}`);
-  const comments = document.getElementById(`comments-${index}`);
+function add(i){
+  const input = document.getElementById("i"+i);
+  const comments = document.getElementById("c"+i);
 
-  if (input.value.trim() !== "") {
+  if(input.value){
     const p = document.createElement("p");
     p.textContent = input.value;
     comments.appendChild(p);
-    input.value = "";
+    input.value="";
   }
 }
 
-function focusComment(index) {
-  document.getElementById(`input-${index}`).focus();
+function focusInput(i){
+  document.getElementById("i"+i).focus();
 }
 
-function sharePost() {
+function share(){
   navigator.clipboard.writeText(window.location.href);
   alert("Link copied!");
 }
