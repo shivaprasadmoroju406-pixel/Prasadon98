@@ -1,6 +1,6 @@
 const storiesDiv = document.getElementById("stories");
 const home = document.getElementById("home");
-const reelsPage = document.getElementById("reelsPage");
+const reelsContainer = document.getElementById("reels");
 
 // FORMAT NAME
 function formatName(file){
@@ -95,14 +95,42 @@ function openStory(i){
 
 /* REELS */
 function loadReels(){
+  reelsContainer.innerHTML = "";
+
   DATA.reels.forEach(file=>{
-    reelsPage.innerHTML += `
+    reelsContainer.innerHTML += `
       <div class="reel">
-        <video src="assets/reels/${file}" muted loop playsinline></video>
+        <video 
+          src="assets/reels/${file}" 
+          muted 
+          loop 
+          playsinline 
+          preload="metadata"
+        ></video>
       </div>
     `;
   });
 
+  setupReels();
+}
+function setupReels(){
+  const videos = document.querySelectorAll(".reel video");
+
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      const video = entry.target;
+
+      if(entry.isIntersecting){
+        video.play().catch(()=>{});
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  },{threshold:0.6});
+
+  videos.forEach(v=>observer.observe(v));
+}
   const videos = document.querySelectorAll(".reel video");
 
   const observer = new IntersectionObserver(entries=>{
@@ -118,7 +146,7 @@ function loadReels(){
   videos.forEach(v=>observer.observe(v));
 }
 
-loadReels();
+window.addEventListener("load", loadReels);
 
 /* NAVIGATION */
 function showHome(){
